@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="keywords" content="共通キーワード" />
-  <meta name="description" content="<?php bloginfo('description');?>" />
+  <meta name="description" content="<?php bloginfo('description'); ?>" />
   <title><?php bloginfo('name'); ?></title>
   <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/assets/images/common/favicon.ico" />
   <link href="https://fonts.googleapis.com/earlyaccess/notosansjapanese.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css?family=Vollkorn:400i" rel="stylesheet" />
   <?php wp_head(); ?>
 </head>
-<body>
+
+<body <?php body_class(); ?>>
   <div class="container">
     <header id="header">
       <div class="header-inner">
@@ -60,15 +62,29 @@
         </div>
       </div>
     </header>
-    <section class="section-contents" id="keyvisual">
-      <img src="<?php echo get_template_directory_uri(); ?>/assets/images/bg-section-keyvisual.jpg" alt="MAIN IMAGE" />
-      <div class="wrapper">
-        <h1 class="site-title">Connecting the future.</h1>
-        <p class="site-caption">
-          私たちパシフィックモール開発は<br />
-          世界各地のショッピングモール開発を通じて<br />
-          人と人、人と地域を結ぶお手伝いをしています。
-        </p>
-      </div>
-    </section>
-    
+    <?php if (is_front_page()) : ?>
+      <section class="section-contents" id="keyvisual">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/bg-section-keyvisual.jpg" alt="MAIN IMAGE" />
+        <div class="wrapper">
+          <h1 class="site-title">Connecting the future.</h1>
+          <p class="site-caption">
+            私たちパシフィックモール開発は<br />
+            世界各地のショッピングモール開発を通じて<br />
+            人と人、人と地域を結ぶお手伝いをしています。
+          </p>
+        </div>
+      </section>
+    <?php else : ?>
+      <div class="wrap">
+        <div id="primary" class="content-area"></div>
+        <main>
+          <div class="page-contents">
+            <div class="page-head">
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/bg-page-dummy.png">
+              <div class="wrapper">
+                <span class="page-title-en"></span>
+                <h2 class="page-title"><?php echo get_the_title(); ?></h2>
+              </div>
+            </div>
+            <div class="page-container">
+            <?php endif; ?>
