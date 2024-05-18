@@ -4253,3 +4253,7 @@ input[type="submit"]::after {
 		background-image: url('../images/svg/icon-next-short.svg');
 	}
 }
+/* 追加 */
+.page-main .wp-block-table td {
+	border: none;
+}
