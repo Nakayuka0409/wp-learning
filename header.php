@@ -28,26 +28,14 @@
         </button>
         <div class="header-nav">
           <nav class="global-nav">
-            <ul class="menu">
-              <li class="menu-item">
-                <a class="nav-link active" href="#">ホーム</a>
-              </li>
-              <li class="menu-item">
-                <a class="nav-link" href="#">企業情報</a>
-              </li>
-              <li class="menu-item">
-                <a class="nav-link" href="#">店舗情報</a>
-              </li>
-              <li class="menu-item">
-                <a class="nav-link" href="#">地域貢献活動</a>
-              </li>
-              <li class="menu-item">
-                <a class="nav-link" href="#">ニュースリリース</a>
-              </li>
-              <li class="menu-item">
-                <a class="nav-link" href="#">お問い合わせ</a>
-              </li>
-            </ul>
+            <?php
+            wp_nav_menu(
+              array(
+                'theme_location' => 'place_global',
+                'container' => 'false',
+              )
+            );
+            ?>
           </nav>
           <form class="search-form" role="search" method="get" action="">
             <div class="search-box">
