@@ -71,7 +71,7 @@
               <img src="<?php echo get_template_directory_uri(); ?>/assets/images/bg-page-dummy.png">
               <div class="wrapper">
                 <span class="page-title-en"></span>
-                <h2 class="page-title"><?php echo get_the_title(); ?></h2>
+                <h2 class="page-title"><?php echo get_main_title(); ?></h2>
               </div>
             </div>
             <div class="page-container">
