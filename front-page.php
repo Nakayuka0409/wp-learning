@@ -135,8 +135,8 @@
       <?php echo get_the_excerpt(); ?>
       </p>
       <div class="section-buttons">
-        <button type="button" class="button button-ghost" onclick="javascript:location.href = '#';">
-          企業情報を見る
+        <button type="button" class="button button-ghost" onclick="javascript:location.href = '<?php echo esc_url(home_url('company')); ?>';">
+          <?php the_title(); ?>一覧を見る
         </button>
       </div>
       <?php wp_reset_postdata(); ?>
