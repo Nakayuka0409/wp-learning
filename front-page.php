@@ -124,18 +124,22 @@
   </section>
   <section class="section-contents" id="company">
     <div class="wrapper">
+      <?php
+      $company_page = get_page_by_path('company');
+      $post = $company_page;
+      setup_postdata($post);
+      ?>
       <span class="section-title-en">Enterprise Information</span>
-      <h2 class="section-title">企業情報</h2>
+      <h2 class="section-title"><?php the_title(); ?></h2>
       <p class="section-lead">
-        私たちパシフィックモール開発は、<br />
-        ショッピングモール開発を通じて新たな価値を創造し<br />
-        社会に貢献するグローバルな企業を目指します。
+      <?php echo get_the_excerpt(); ?>
       </p>
       <div class="section-buttons">
         <button type="button" class="button button-ghost" onclick="javascript:location.href = '#';">
           企業情報を見る
         </button>
       </div>
+      <?php wp_reset_postdata(); ?>
     </div>
   </section>
   <?php get_footer(); ?>
