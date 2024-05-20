@@ -2,7 +2,7 @@
   <section class="section-contents" id="shop">
     <div class="wrapper">
       <?php
-      $shop_obj = get_page_by_path( 'shop' );
+      $shop_obj = get_page_by_path('shop');
       $post = $shop_obj;
       setup_postdata($post);
       $shop_title = get_the_title();
@@ -14,25 +14,25 @@
       <ul class="shops">
         <?php
         $shop_pages = get_child_pages(4, $shop_obj->ID);
-        if( $shop_pages->have_posts() ) :
-          while( $shop_pages->have_posts() ) : $shop_pages->the_post();
-          ?>
-        <li class="shops-item">
-          <a class="shop-link" href="<?php the_permalink(); ?>">
-            <div class="shop-image">
-              <?php the_post_thumbnail('common'); ?>
-            </div>
-            <div class="shop-body">
-              <p class="name"><?php the_title(); ?></p>
-              <p class="location"></p>
-              <div class="buttonBox">
-                <button type="button" class="seeDetail">MORE</button>
-              </div>
-            </div>
-          </a>
-        </li>
+        if ($shop_pages->have_posts()) :
+          while ($shop_pages->have_posts()) : $shop_pages->the_post();
+        ?>
+            <li class="shops-item">
+              <a class="shop-link" href="<?php the_permalink(); ?>">
+                <div class="shop-image">
+                  <?php the_post_thumbnail('common'); ?>
+                </div>
+                <div class="shop-body">
+                  <p class="name"><?php the_title(); ?></p>
+                  <p class="location"></p>
+                  <div class="buttonBox">
+                    <button type="button" class="seeDetail">MORE</button>
+                  </div>
+                </div>
+              </a>
+            </li>
         <?php endwhile;
-        wp_reset_postdata();
+          wp_reset_postdata();
         endif;
         ?>
       </ul>
@@ -45,58 +45,43 @@
   </section>
   <section class="section-contents" id="contribution">
     <div class="wrapper">
+      <?php
+      $contribution_obj = get_page_by_path('contribution');
+      $post = $contribution_obj;
+      setup_postdata($post);
+      $contribution_title = get_the_title();
+      ?>
       <span class="section-title-en">Regional Contribution</span>
-      <h2 class="section-title">地域貢献活動</h2>
-      <p class="section-lead">人と地域を結ぶ活動を行っております</p>
+      <h2 class="section-title"><?php the_title(); ?></h2>
+      <p class="section-lead"><?php echo get_the_excerpt(); ?></p>
+      <?php wp_reset_postdata(); ?>
       <div class="articles">
-        <article class="article-card">
-          <a class="card-link" href="#">
-            <div class="card-inner">
-              <div class="card-image">
-                <img src="#" alt="" />
-              </div>
-              <div class="card-body">
-                <p class="title">街のちびっこダンス大会</p>
-                <p class="excerpt">2018年8月大手町モールにて「街のちびっこダンス大会」を開催しました。近年はダンス教室に通うお子様も多く、お子様同士や親御様同士の交流の場となればと思い企画いたしました。</p>
-                <div class="buttonBox">
-                  <button type="button" class="seeDetail">MORE</button>
+        <?php
+        $contribution_pages = get_child_pages(3, $contribution_obj->ID);
+        if ($contribution_pages->have_posts()) :
+          while ($contribution_pages->have_posts()) : $contribution_pages->the_post();
+        ?>
+            <article class="article-card">
+              <a class="card-link" href="<?php the_permalink(); ?>">
+                <div class="card-inner">
+                  <div class="card-image">
+                    <?php the_post_thumbnail('front-contribution'); ?>
+                  </div>
+                  <div class="card-body">
+                    <p class="title"><?php the_title(); ?></p>
+                    <p class="excerpt"><?php echo get_the_excerpt(); ?></p>
+                    <div class="buttonBox">
+                      <button type="button" class="seeDetail">MORE</button>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </a>
-        </article>
-        <article class="article-card">
-          <a class="card-link" href="#">
-            <div class="card-inner">
-              <div class="card-image">
-                <img src="#" alt="" />
-              </div>
-              <div class="card-body">
-                <p class="title">都市カンファレンス</p>
-                <p class="excerpt">新しい都市の構想を考える LAモールでは2018年8月20日、モール周辺のロサンゼルスの新しい都市構想について、モールにいらっしゃったお客様と考えるカンファレンスを開催いたしました。</p>
-                <div class="buttonBox">
-                  <button type="button" class="seeDetail">MORE</button>
-                </div>
-              </div>
-            </div>
-          </a>
-        </article>
-        <article class="article-card">
-          <a class="card-link" href="#">
-            <div class="card-inner">
-              <div class="card-image">
-                <img src="#" alt="" />
-              </div>
-              <div class="card-body">
-                <p class="title">タムリンフェスティバル</p>
-                <p class="excerpt">今年もタムリンフェスティバルは大盛況 2018年9月にインドネシアのタムリンホールにて「タムリンフェスティバル」を開催しました。</p>
-                <div class="buttonBox">
-                  <button type="button" class="seeDetail">MORE</button>
-                </div>
-              </div>
-            </div>
-          </a>
-        </article>
+              </a>
+            </article>
+        <?php
+          endwhile;
+          wp_reset_postdata();
+        endif;
+        ?>
       </div>
       <div class="section-buttons">
         <button type="button" class="button button-ghost" onclick="javascript:location.href = '#';">
@@ -156,4 +141,4 @@
       </div>
     </div>
   </section>
-  <?php get_footer();?>
+  <?php get_footer(); ?>
