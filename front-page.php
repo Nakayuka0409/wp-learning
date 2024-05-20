@@ -13,7 +13,7 @@
       <?php wp_reset_postdata(); ?>
       <ul class="shops">
         <?php
-        $shop_pages = get_child_pages(-1, $shop_obj->ID);
+        $shop_pages = get_child_pages(4, $shop_obj->ID);
         if( $shop_pages->have_posts() ) :
           while( $shop_pages->have_posts() ) : $shop_pages->the_post();
           ?>
