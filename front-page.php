@@ -92,31 +92,33 @@
   </section>
   <section class="section-contents" id="news">
     <div class="wrapper">
+      <?php $term_obj = get_term_by('slug', 'news', 'category'); ?>
       <span class="section-title-en">News Release</span>
-      <h2 class="section-title">ニュースリリース</h2>
-      <p class="section-lead">パシフィックモール開発の最新情報をお送りします</p>
+      <h2 class="section-title"><?php echo $term_obj->name; ?></h2>
+      <p class="section-lead"><?php echo $term_obj->description; ?></p>
       <ul class="news">
+        <?php
+        $args = array(
+          'post_type' => 'post',
+          'category_name' => 'news',
+          'posts_per_page' => 3,
+        );
+        $news_posts = new WP_Query($args);
+        if($news_posts->have_posts()):
+          while($news_posts->have_posts()): $news_posts->the_post();
+        ?>
         <li class="news-item">
-          <a class="detail-link" href="#">
-            <time class="time">2019.01.14</time>
-            <p class="title">インド 消費者向けアプリのMecha-Indiaと業務提携開始</p>
-            <p class="news-text">パシフィックモール株式会社（以下、当社）は、インド共和国（以下、インド）において、Mecha-India（以下、メカ・インディア）との協業を開始します。 Mecha-Indiaは、インドにおける配車サービス大手であり、電 [&hellip;]</p>
+          <a class="detail-link" href="<?php the_permalink(); ?>">
+            <time class="time"><?php the_time('Y.m.d'); ?></time>
+            <p class="title"><?php the_title(); ?></p>
+            <p class="news-text"><?php echo get_the_excerpt();?></p>
           </a>
         </li>
-        <li class="news-item">
-          <a class="detail-link" href="#">
-            <time class="time">2018.12.17</time>
-            <p class="title">年末年始休業のお知らせ</p>
-            <p class="news-text">お客様　各位 師走の候、貴社ますますご清祥のこととお喜び申し上げます。 平素は格別のご高配を賜り、厚くお礼申し上げます。 さて、本年（平成30年）の年末年始は、下記の通り休業させていただきますので、よろしくお願いいたしま [&hellip;]</p>
-          </a>
-        </li>
-        <li class="news-item">
-          <a class="detail-link" href="#">
-            <time class="time">2018.11.15</time>
-            <p class="title">米国ニューヨーク・パークアベニューモール 美術館 「The Art of Park Ave.」にて、特設イベント「世界の若手美術展」を開催</p>
-            <p class="news-text">美術館「The Art of Park Ave.」は、若手芸術家の作品を展示している美術館としてはニューヨーク最大規模で、常時約5,000点の作品を展示しています。 この度、2018年11月30日&#12316;2019年1月31日の [&hellip;]</p>
-          </a>
-        </li>
+        <?php
+        endwhile;
+        wp_reset_postdata();
+      endif;
+      ?>
       </ul>
       <div class="section-buttons">
         <button type="button" class="button button-ghost" onclick="javascript:location.href = '#';">
