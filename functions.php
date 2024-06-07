@@ -130,3 +130,19 @@ function apply_excerpt_br($value) {
     return nl2br($value);
 }
 add_filter('get_the_excerpt', 'apply_excerpt_br');
+
+//ウィジェット機能を有効化
+function theme_widgets_init() {
+    register_sidebar(
+        array(
+            'name' => 'サイドバーウィジェットエリア',
+            'id' => 'primary-widget-area',
+            'description' => '固定ページのサイドバー',
+            'before_widget' => '<aside class="side-inner">',
+            'after_widget' => '</aside>',
+            'before_title' => '<h4 class="title">',
+            'after_title' => '</h4>',
+        )
+    );
+}
+add_action('widgets_init', 'theme_widgets_init');
