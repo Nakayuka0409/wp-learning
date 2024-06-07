@@ -2382,6 +2382,8 @@ input {
 .page-contents .page-container {
 	width: 100%;
 	position: relative;
+	max-width: 960px;
+    margin: 0 auto 5%;
 }
 .page-contents .page-container .Breadcrumbs {
 	margin: auto;

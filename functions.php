@@ -25,6 +25,8 @@ function get_main_title()
         return get_the_title();
     elseif (is_category()) :
         return single_cat_title();
+    elseif (is_search()) :
+        return 'サイト内検索結果';
     endif;
 }
 
@@ -76,8 +78,10 @@ function get_main_image()
         return get_the_post_thumbnail($post->ID, 'detail');
     elseif (is_category('news') || is_singular('post')) :
         return '<img src="' . get_template_directory_uri() . '/assets/images/bg-page-news.jpg" />';
+        elseif(is_search()) :
+            return '<img src="' . get_template_directory_uri() . '/assets/images/bg-page-search.jpg" />';
     else :
-        return '<img src="' . get_template_directory_uri() . '/assets/images/bg-page-dummy.jpg" />';
+        return '<img src="' . get_template_directory_uri() . '/assets/images/bg-page-dummy.png" />';
     endif;
 }
 
