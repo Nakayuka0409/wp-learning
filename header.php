@@ -56,9 +56,7 @@
         <div class="wrapper">
           <h1 class="site-title">Connecting the future.</h1>
           <p class="site-caption">
-            私たちパシフィックモール開発は<br />
-            世界各地のショッピングモール開発を通じて<br />
-            人と人、人と地域を結ぶお手伝いをしています。
+            <?php echo get_the_excerpt();  ?>
           </p>
         </div>
       </section>

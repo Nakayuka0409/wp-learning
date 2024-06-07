@@ -103,3 +103,30 @@ function get_specific_posts($post_type, $taxonomy = null, $term = null, $number 
     $specific_posts = new WP_Query($args);
     return $specific_posts;
 }
+
+//抜粋文のデフォルト文字数を定義
+function cms_excerpt_more() {
+    return '...';
+}
+add_filter('excerpt_more', 'cms_excerpt_more');
+
+function cms_excerpt_length() {
+    return 80;
+}
+add_filter('excerpt_mblength', 'cms_excerpt_length');
+
+//抜粋機能を固定ページに使えるように設定
+add_post_type_support('page', 'excerpt');
+
+//各抜粋文を適度な長さに調整
+function get_flexible_excerpt($number) {
+    $value = get_the_excerpt();
+    $value = wp_trim_words($value, $number, '...');
+    return $value;
+}
+
+//get_the_excerpt()で取得する文字列に改行タグを挿入
+function apply_excerpt_br($value) {
+    return nl2br($value);
+}
+add_filter('get_the_excerpt', 'apply_excerpt_br');
