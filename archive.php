@@ -12,7 +12,9 @@
           endif;
           ?>
         </div>
+        <?php get_template_part( 'paginate' ); ?>
       </div>
+      
     </div>
   </div>
 </div>
