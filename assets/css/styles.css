@@ -3627,13 +3627,13 @@ iframe {
 }
 
 .sns-navi .twitter {
-    background: url('###') no-repeat;
+    background: url('../images/twitter.png') no-repeat;
 }
 .sns-navi .facebook {
-    background: url('###') no-repeat;
+    background: url('../images/facebook.png') no-repeat;
 }
 .sns-navi .instagram {
-    background: url('###') no-repeat;
+    background: url('../images/instagram.png') no-repeat;
 }
 
 .category_image {
