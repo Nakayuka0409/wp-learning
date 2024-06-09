@@ -52,7 +52,7 @@
     </header>
     <?php if (is_front_page()) : ?>
       <section class="section-contents" id="keyvisual">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/bg-section-keyvisual.jpg" alt="MAIN IMAGE" />
+        <?php echo get_main_image(); ?>
         <div class="wrapper">
           <h1 class="site-title">Connecting the future.</h1>
           <p class="site-caption">
@@ -68,7 +68,7 @@
             <div class="page-head">
               <?php echo get_main_image(); ?>
               <div class="wrapper">
-                <span class="page-title-en"></span>
+                <span class="page-title-en"><?php echo get_main_en_title(); ?></span>
                 <h2 class="page-title"><?php echo get_main_title(); ?></h2>
               </div>
             </div>

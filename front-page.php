@@ -7,7 +7,7 @@
       setup_postdata($post);
       $shop_title = get_the_title();
       ?>
-      <span class="section-title-en">Shop Information</span>
+      <span class="section-title-en"><?php the_field('english_title'); ?></span>
       <h2 class="section-title"><?php the_title(); ?></h2>
       <p class="section-lead"><?php echo get_the_excerpt(); ?></p>
       <?php wp_reset_postdata(); ?>
@@ -24,7 +24,7 @@
                 </div>
                 <div class="shop-body">
                   <p class="name"><?php the_title(); ?></p>
-                  <p class="location"></p>
+                  <p class="location"><?php the_field('location'); ?></p>
                   <div class="buttonBox">
                     <button type="button" class="seeDetail">MORE</button>
                   </div>
@@ -51,7 +51,7 @@
       setup_postdata($post);
       $contribution_title = get_the_title();
       ?>
-      <span class="section-title-en">Regional Contribution</span>
+      <span class="section-title-en"><?php the_field('english_title'); ?></span>
       <h2 class="section-title"><?php the_title(); ?></h2>
       <p class="section-lead"><?php echo get_the_excerpt(); ?></p>
       <?php wp_reset_postdata(); ?>
@@ -93,7 +93,7 @@
   <section class="section-contents" id="news">
     <div class="wrapper">
       <?php $term_obj = get_term_by('slug', 'news', 'category'); ?>
-      <span class="section-title-en">News Release</span>
+      <span class="section-title-en"><?php the_field('english_title', $term_obj->taxonomy. '_'. $term_obj->term_id); ?></span>
       <h2 class="section-title"><?php echo $term_obj->name; ?></h2>
       <p class="section-lead"><?php echo $term_obj->description; ?></p>
       <ul class="news">
@@ -129,7 +129,7 @@
       $post = $company_page;
       setup_postdata($post);
       ?>
-      <span class="section-title-en">Enterprise Information</span>
+      <span class="section-title-en"><?php the_field('english_title'); ?></span>
       <h2 class="section-title"><?php the_title(); ?></h2>
       <p class="section-lead">
       <?php echo get_the_excerpt(); ?>
